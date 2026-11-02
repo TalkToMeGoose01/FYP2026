@@ -1,0 +1,52 @@
+flowchart TD
+  subgraph LIT["Literature (6_Literature_Search)"]
+    L1["Scopus and Web of Science exports<br/>4 search strings, 11 Aug 2026"] --> L2["a10_screening_triage.py<br/>dedup + triage, 817 records"]
+    L2 --> L3["a10b_fill_triage_codes.py<br/>first-pass codes"]
+    L3 --> L4["a10c_review_sheet.py<br/>REVIEW_AB_flagged.xlsx"]
+    L4 --> L5["a10d_apply_author_review.py<br/>Search A and B review"]
+    L5 --> L6["a10e_record_D_review.py<br/>Search D review"]
+    L6 --> L7["screening_*.csv<br/>CODING_OUTCOME.md"]
+  end
+
+  subgraph PREP["Data and models"]
+    D0["BDGP2 CSVs in ../Data<br/>(not included)"] --> D1["fyp_pipeline.py<br/>screen, merge, align_to_schema,<br/>scale, 48 h windows"]
+    D1 --> M1["FYP_Phase2_TFT_FINAL.ipynb<br/>LSTM refit, 72-config TFT grid,<br/>Gate 1, sweep of 1,294 buildings, Gate 2"]
+    M1 --> M2["Analyses 1 to 4 in the notebook<br/>six draws, ceilings, SHAP and IG"]
+    M2 --> A1[("4_Archives<br/>analysis1, analysis4")]
+    D1 --> R6["a6_sameseed_rung.py, a6b_fixedlength_rung.py<br/>(inside the analysis6 archive)"]
+    R6 --> A6[("4_Archives<br/>analysis6")]
+  end
+
+  subgraph ANA["Stand-alone analyses (2_Code/analysis_scripts)"]
+    S1["Analysis5_TenSeed_Confirmation.ipynb<br/>10 seeds per architecture"]
+    S2["a7, a8, a9<br/>draw check, SHAP ceiling,<br/>rank 2 vs rank 5 (a9 trains 20 TFTs)"]
+    S3["a11, a12, a13<br/>stratification, zero-fill mask, input identity"]
+    S4["a14, a15, a16, a16b<br/>target correlation, amendments, normality"]
+    S5["a17, a18, a19<br/>SHAP and IG on the Analysis 5 models,<br/>gas target (a19 trains new models)"]
+    S6["a20, a21<br/>IG baseline x steps, ceilings outside education"]
+  end
+
+  A1 --> S2
+  A1 --> S3
+  A6 --> RES
+  D1 -. new training runs .-> S2
+  D1 -. raw data .-> S4
+  D1 -. new gas models .-> S5
+  D1 --> S1
+  S1 --> S5
+  S3 --> S4
+  A1 --> S6
+
+  S1 --> RES[("3_Results<br/>every file with a PROVENANCE record")]
+  S2 --> RES
+  S3 --> RES
+  S4 --> RES
+  S5 --> RES
+  S6 --> RES
+  A1 --> RES
+
+  RES --> F["2_Code/figure_scripts<br/>make_figures.py, f02, f06, f08 to f11"]
+  L7 --> F
+  F --> T["1_Thesis<br/>thesis_submission.tex"]
+  RES --> T
+  L7 --> T

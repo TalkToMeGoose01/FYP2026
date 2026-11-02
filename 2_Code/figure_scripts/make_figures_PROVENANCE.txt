@@ -1,0 +1,41 @@
+FIGURES -- generated from archived artefacts, no new model runs
+run (UTC) : 2026-09-09T07:04:29.221390+00:00
+script    : make_figures.py  sha256 ea9dc6878822313ce84aabca1c42a18b4154e23c8c3ee8692a0875029d66a159
+python 3.11.15  numpy 2.4.4  pandas 3.0.2  matplotlib 3.10.9
+figures written: 16
+
+inputs read:
+  results/analysis11_stratification_eps2.csv                 sha256 daa9a7b02f7df86939d8215afb746eee6fdacec1151ce64304e811e7e442ce91
+  results/analysis12_agreement.csv                           sha256 c3d7bd6e5218d5f1692cfd6e53e5a32be058e13552cf082f7ce5fc6b9aa5cf97
+  results/analysis12_feature_mask.csv                        sha256 e62453030df1ca3fdd68bfebb0a13d8ccc36623461cf00ecaee70a08ddd47b56
+  results/analysis13_input_identity.csv                      sha256 300422aac16814f7b5596b2d5a0c788e0385d89aec76c74fff07e918486651b1
+  results/analysis14_per_building_corr.csv                   sha256 7977f9f0869dab9717a694a2a6d96d505a70dd369b0a36f19c0cb39b3b68af5a
+  results/analysis1_perm_both_models.csv                     sha256 765001f8796c247415b110c7f0a02682f136c88304234949b4a0a471712ac722
+  results/analysis1b_variance_subsample.csv                  sha256 b5031f15fb28756ba472d6cdc0d4b2a9c0adc205b55f06d5e92b9f60d40e857e
+  results/analysis1d_cap_validation.csv                      sha256 edcd6c7b4761e4d38fe9ba0ea6511138bf9123a417463754e3ac55c4947ee6cd
+  results/analysis1d_cap_validation_tft.csv                  sha256 fcf63d5ede6f33400b24c59f072a053588235f768733dee8b41512c51ce81d1d
+  results/analysis4_shapig_meanbaseline_200steps_FULL.csv    sha256 288edfd17f0db8769a66cf8256e5836348a0f19862a1559d47326f31353f30b1
+  results/analysis5_tenseed_predictive.csv                   sha256 a4aeb0ee67d24ae1a6ef89a3c2b32f33ebed2282ca6d7241df4ec03c4e4c0701
+  results/gate2_parity.csv                                   sha256 03b28f75b94eadd35e0e42a924b37086a2ae04e4077148897487ee92dd1a880e
+  screening/screening_SUMMARY.txt                            sha256 374c7410a5b1fcdd5e9e482e91fd18f12be551cdf78262eebb3009c0866c39bc
+  tft_extended_grid_log.csv                                  sha256 cd5ae33fb65d1198c3f75a020479e73e02608ee931df09bc5707c3f52841f619
+  tft_top5_confirmation_RERUN_2026-09-02T064610Z.csv         sha256 772a69406f63f701240f34865cdc8d726adff4ce60f45012489926da1bf2cafa
+  tft_top5_confirmation_log.csv                              sha256 4bf1a19b6267bbceb037cde4df034a5b3af950750a827740b2394399a02d15a9
+
+figures:
+  f01_instability_by_method.pdf
+  f02_variance_ladder.pdf
+  f03_input_degeneracy.pdf
+  f04_type_discrimination.pdf
+  f05_population_attrition.pdf
+  f06_search_flow.pdf
+  f07_zerofill_artefact.pdf
+  f08_gate2_parity.pdf
+  f09_tenseed_predictive.pdf
+  f10_selection_instability.pdf
+  f11_permutation_negatives.pdf
+  f12_cross_method_agreement.pdf
+  f13_target_correlation.pdf
+  f14_batch_dispersion.pdf
+  f15_pipeline.pdf
+  f16_tensor_collapse.pdf
